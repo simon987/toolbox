@@ -32,7 +32,7 @@ def flame_graph_get(key: str):
     return Response(content=data, media_type="image/svg+xml")
 
 @app.post("/flame_graph")
-def flame_graph(file: bytes = File(...)):
+def flame_graph(file: bytes = File(...), width: int = 1200):
     key = str(uuid.uuid4())
     temp = "/dev/shm/fg_%s.bin" % key
     with open(temp, "wb") as f:
@@ -51,7 +51,8 @@ def flame_graph(file: bytes = File(...)):
         )
 
         p3 = Popen(
-            ["perl", "flamegraph.pl"],
+            ["perl", "flamegraph.pl", "--bgcolors", "#FFFFFF",
+             "--fontsize", "10", "--fonttype", "monospace", "--width", str(width), "--title", " "],
             cwd="./FlameGraph",
             stdin=PIPE, stdout=PIPE, stderr=PIPE
         )

@@ -1,7 +1,9 @@
 <template>
-  <v-container>
+  <v-container id="flamegraph-container">
 
     <p>Run with <code>perf record -F997 --call-graph dwarf -q &lt;program&gt;</code></p>
+
+    <p>You can also upload the file manually with <code>curl -s -XPOST {{apiUrl}}/flame_graph -F "file=@perf.data" | jq -r .key | xargs printf "{{apiUrl}}/flame_graph/%s\n" $1</code></p>
 
     <v-file-input :loading="loading" label="perf.data" id="flamegraph-upload" @change="onUpload()"></v-file-input>
 
@@ -25,6 +27,7 @@ export default class FlameGraph extends Vue {
   public tool = toolByName('FlameGraph')
   public key: string | null = null
   public loading = false
+  public apiUrl = API_URL
 
   getGraphUrl() {
     return `${API_URL}/flame_graph/${this.key}`
@@ -39,6 +42,9 @@ export default class FlameGraph extends Vue {
     axios.post('http://localhost:8000/flame_graph', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
+      },
+      params: {
+        width: document.getElementById("flamegraph-container")?.offsetWidth.toString()
       }
     }).then(resp => {
       const result = resp.data as FlameGraphResult
