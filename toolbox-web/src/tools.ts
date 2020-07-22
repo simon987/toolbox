@@ -1,7 +1,8 @@
 import {Tool} from "@/models";
 
 export const tools: Tool[] = [
-  {name: "FlameGraph", icon: "mdi-bug"}
+  {name: "FlameGraph", icon: "mdi-bug"},
+  {name: "Spectrograph", icon: "mdi-music"}
 ]
 
 export const toolByName = (name: string) => {

@@ -30,7 +30,7 @@ export default class FlameGraph extends Vue {
   public apiUrl = API_URL
 
   getGraphUrl() {
-    return `${API_URL}/flame_graph/${this.key}`
+    return `${API_URL}/data/${this.key}?type=image/svg%2Bxml`
   }
 
   onUpload() {
