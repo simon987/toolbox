@@ -14,7 +14,7 @@ from fastapi.params import Form
 from starlette.responses import Response
 
 app = FastAPI()
-rdb = redis.Redis()
+rdb = redis.Redis(host="redis")
 
 
 @app.get("/")
