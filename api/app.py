@@ -81,7 +81,6 @@ def spectrograph(file: bytes = File(...), x: int = Form(...), y: int = Form(...)
          "-x", str(x), "-y", str(y), "-z", str(z),
          "-w", window,
          "-o", "-"],
-        cwd="./FlameGraph",
         stdin=PIPE, stdout=PIPE, stderr=PIPE,
     )
 

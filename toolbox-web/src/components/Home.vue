@@ -12,6 +12,12 @@
           <v-card-title>Spectrograph</v-card-title>
           <v-card-subtitle>Generate spectrograph of audio files with <i>SoX</i></v-card-subtitle>
         </v-card>
+
+      <v-card class="mx-2" max-width="344" to="/tool/pev2">
+        <v-img :src="require('@/assets/pev2.png')" height="200px"></v-img>
+        <v-card-title>PEV2</v-card-title>
+        <v-card-subtitle>Postgres Explain Visualizer</v-card-subtitle>
+      </v-card>
     </v-row>
   </div>
 </template>

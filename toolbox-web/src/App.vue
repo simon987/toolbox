@@ -60,7 +60,7 @@ export default class App extends Vue {
 html, body {
   padding: 0;
   margin: 0;
-  overflow: hidden !important;
+  overflow: auto !important;
 }
 
 .monospace {
