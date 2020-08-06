@@ -1,0 +1,10 @@
+version: "3"
+services:
+  redis:
+    image: redis
+  toolbox_api:
+    build: api/
+  toolbox_web:
+    build: toolbox-web/
+    ports:
+      - 8080:80
